@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码页</title>
+</head>
+<body>
+<form action="{{ url_for('mpwd_result') }}" method="POST">
+    <p>账号:  <input type="text" name="usr" width="10">@game.sohu.com</p>
+    <p>超密: <input type="password" name="superpwd" width="10"></p>
+    <p>新密码:   <input type="password" name="password" width="10"></p>
+    <p>请确认新密码:   <input type="password" name="re_password" width="10"></p>
+    <p><input type="submit"></p>
+
+</form>
+</body>
+</html>
