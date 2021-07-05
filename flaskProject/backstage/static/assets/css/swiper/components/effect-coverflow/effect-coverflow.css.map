@@ -1,0 +1,1 @@
+{"version":3,"sources":["swiper/components/effect-coverflow/effect-coverflow.scss"],"names":[],"mappings":"AAAA;EAEI,wBAAA;EACA,uBAAuB,EAAA","file":"effect-coverflow.css","sourcesContent":[".swiper-container-coverflow {\n  .swiper-wrapper {\n    /* Windows 8 IE 10 fix */\n    -ms-perspective: 1200px;\n  }\n}\n"]}

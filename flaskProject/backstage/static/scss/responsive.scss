@@ -1,0 +1,278 @@
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+
+@include media-breakpoint-up(sm) {
+  .slider-content {
+    br {
+      display: none;
+    }
+  }
+
+  .filter-tabs {
+    li {
+      font-size: 20px;
+
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+    }
+  }
+
+  .blog {
+    padding: 120px 0;
+
+    .title {
+      font-size: 36px;
+    }
+  }
+
+  .single-post {
+    .meta {
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .logo {
+    a {
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  .main-menu {
+    position: relative;
+
+    li {
+      position: relative;
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: $gray-300;
+        position: absolute;
+        top: 0;
+      }
+
+      &:first-child {
+        &::after {
+          width: 50%;
+          right: 0;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          width: 50%;
+        }
+      }
+
+      &::before {
+        content: "";
+        width: 1px;
+        height: 30px;
+        background: $gray-300;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        @include transition;
+      }
+
+      &:hover {
+        &::before {
+          width: 3px;
+          background-color: $red;
+        }
+      }
+    }
+
+    a {
+      font-weight: 700;
+    }
+  }
+
+  .swiper-slide-active {
+    .single-post {
+      &:first-of-type {
+        .col-md-6 {
+          order: 1;
+
+          &:nth-child(2) {
+            order: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .slider {
+    .social {
+      a {
+        font-size: 14px;
+      }
+    }
+  }
+
+
+  .social {
+
+    a {
+      font-size: 14px;
+
+      i {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .main-nav {
+    .nav-link {
+      padding: 2rem 1.9rem;
+    }
+
+    a {
+      font-size: 18px;
+    }
+  }
+
+
+  .slider {
+    .slide-img {
+      margin-top: 0;
+    }
+
+    .swiper-pagination-bullet {
+      font-size: 60px;
+
+      &:not(:last-child) {
+        margin-right: 100px;
+
+        &::after {
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  .slider-content {
+    h5 {
+      font-size: 60px;
+      display: block;
+
+      span {
+        font-size: 80px;
+
+        &:last-of-type {
+          font-size: 71px;
+        }
+      }
+    }
+
+    br {
+      display: block;
+    }
+
+  }
+
+  .slide-control {
+    background: $gray-100;
+    margin-left: 50%;
+  }
+
+  .filter-tabs {
+    width: 80%;
+    margin: 0 auto;
+
+    li {
+      font-size: 24px;
+
+      &:not(:last-child) {
+        margin-right: 50px;
+      }
+
+      &.active {
+        &::after {
+          top: 50%;
+          right: -15px;
+        }
+      }
+    }
+  }
+
+  .review {
+    padding: 160px 0;
+
+    .control-btn {
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 15px 10px;
+
+      br {
+        display: block;
+      }
+    }
+
+  }
+
+  .review-slider {
+    .swiper-slide {
+      padding: 150px 100px;
+    }
+  }
+
+  .blog {
+    .title {
+      font-size: 48px;
+    }
+  }
+}
+
+
+@include media-breakpoint-up(xl) {
+  .slider {
+    .swiper-pagination-bullet {
+      font-size: 82px;
+
+      &:not(:last-child) {
+        margin-right: 120px;
+
+        &::after {
+          width: 120px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1443px) {
+  .slider-content {
+    margin-left: 0;
+
+    br {
+      display: none;
+    }
+
+    h5 {
+      font-size: 40px;
+
+      span {
+        font-size: 55px;
+
+        &:last-of-type {
+          font-size: 71px;
+        }
+      }
+    }
+  }
+}

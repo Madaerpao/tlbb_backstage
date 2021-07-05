@@ -1,0 +1,1 @@
+{"version":3,"sources":["swiper/components/a11y/a11y.scss"],"names":[],"mappings":"AAAA,SAAA;AACA;EACE,kBAAkB;EAClB,OAAO;EACP,MAAM;EACN,oBAAoB;EACpB,UAAU;EACV,cAAc,EAAA","file":"a11y.css","sourcesContent":["/* a11y */\n.swiper-container .swiper-notification {\n  position: absolute;\n  left: 0;\n  top: 0;\n  pointer-events: none;\n  opacity: 0;\n  z-index: -1000;\n}\n"]}

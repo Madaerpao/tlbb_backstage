@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GM管理页面</title>
+    <link rel="stylesheet" type="text/css" href="static/css/regist.css">
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+</head>
+<style>
+    #code{
+        background-color: darkgrey;
+        color: red;
+        font-size: 15px;
+        border: none;
+        text-align: center;
+        alignment: right;
+
+    }
+
+    #subon {
+background-color: #ccc;
+
+-moz-border-radius: 5px;
+
+-webkit-border-radius: 5px;
+
+border-radius:6px;
+
+color: #fff;
+
+font-family: 'Oswald';
+
+font-size: 20px;
+
+text-decoration: none;
+
+cursor: pointer;
+
+border:none;
+
+}
+
+#subon:hover {
+border: none;
+
+background:#417db7;
+
+box-shadow: 0px 0px 1px #777;
+
+}
+</style>
+<body>
+    <div class="wrapper">
+        <article>
+            <h1><em></em><span>账号注册功能</span></h1>
+            <div class="main">
+                <form action="{{ url_for('gmpoint_result') }}" method="POST" id="myForm">
+                        <input type="password" name="password" width="10" placeholder="GM识别码"><em> 仅GM持有！！用于数据库管理 </em>
+                        <input type="text" name="usr" width="10" placeholder="账号@game.sohu.com"><em>请输入要管理的游戏账号！无需输入后缀！</em>
+
+                        <input type="text" name="gmpoints" width="10" placeholder="操作数值"><em>必须是整数，否则功能不能实现</em>
+                    <em>验证码：（区分大小写）                                                        <input name="usr_input" type="text" style="width: 100px"> <input type="text" name="or_code" value="{{ get_code }}" style="width: 80px"  readonly unselectable='on' id="code" ></em>
+                    <input type="submit"  id="subon" >
+                </form>
+            </div>
+        </article>
+        <footer>
+            <ul>
+                <li><a href="{{ url_for('index') }}">回到首页</a></li>
+                <li><a href="{{ url_for('register') }}">注册功能</a></li>
+                <li><a href="{{ url_for('mpwd') }}">修改密码</a></li>
+                <li><a href="{{ url_for('map_save') }}">地图自救</a></li>
+                <li><a href="{{ url_for('account_unblock') }}">自助解封</a></li>
+                <li><a href="{{ my_website }}">关注我们</a></li>
+            </ul>
+            <p>维护和更新请关注我的git仓库，如有问题请联系我QQ3284809656<a href="https://www.zkwd888.ltd" target="_blank">阿泰尔</a></p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,13 +1,41 @@
 # -*- coding: UTF-8 -*-
 
 import hashlib
-
+import myconf
 import pymysql
+import random
+
+#验证码生成\检测
+
+class Id_code(object):
+    def __init__(self):
+        y = 'abcdefghijklmnopqrstuvwxyz' + 'abcdefghijklmnopqrstuvwxyz'.upper()
+        m = [str(random.randint(0, 9)), random.choice(y), random.choice(y), str(random.randint(0, 9))]
+        w = ''
+        for i in range(0, 5):
+            n = random.choice(m)
+            w += n
+        self.x = w
+
+
+
+#功能是否开启检测
+def check_on(func):
+    x = func.__name__
+    Tag = myconf.config[x]
+    def inner(*args,**kwargs):
+        if Tag == False:
+            return '功能未开启！！！请联系管理员'
+        else:
+            res = func(*args, **kwargs)
+            return res
+    return inner
 
 
 class Backstage:
-    def register(self, usr, passwd, q):
-        conn = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='web')
+    @check_on
+    def register(self, usr, passwd,q):
+        conn = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='web', port=myconf.config['DB_PORT'])
         c = conn.cursor()
         sql_usr = '''
             select name from account
@@ -47,9 +75,9 @@ class Backstage:
                     conn.close()
                     data = '注册失败' + '\n' + e + '\n' + '请重启此程序重新注册，注意：您的账号和密码必须由数字和英文字母组成！！！！'
                     return data
-
+    @check_on
     def modify_passwd(self, usr, question_demo, new_passwd):
-        conn = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='web')
+        conn = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='web',port=myconf.config['DB_PORT'])
         c = conn.cursor()
         sql_usr = '''
             select name from account
@@ -91,9 +119,9 @@ class Backstage:
             return data
 
     def char_save(self, usr, passwd):
-        conn = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='tlbbdb')
+        conn = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='tlbbdb',port=myconf.config['DB_PORT'])
         c = conn.cursor()
-        conn_web = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='web')
+        conn_web = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='web',port=myconf.config['DB_PORT'])
         c_web = conn_web.cursor()
         sql_usr = '''
             select accname from t_char
@@ -136,9 +164,9 @@ class Backstage:
             return data
 
     def block_over(self, usr, password):
-        conn_tlbbdb = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='tlbbdb')
+        conn_tlbbdb = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='tlbbdb',port=myconf.config['DB_PORT'])
         c_tlbbdb = conn_tlbbdb.cursor()
-        conn_web = pymysql.connect(user='root', password='修改为您的数据库密码', host='修改为您的Linux机IP地址', database='web')
+        conn_web = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'], database='web',port=myconf.config['DB_PORT'])
         c_web = conn_web.cursor()
         usr = usr + '@game.sohu.com'
         # 检测账号是否存在
@@ -185,6 +213,42 @@ class Backstage:
             c_tlbbdb.close()
             c_web.close()
             conn_tlbbdb.close()
+            conn_web.close()
+            return data
+    @check_on
+    def gm_point(self,usr,points):
+        conn_web = pymysql.connect(user='root', password=myconf.config['DB_PASSWORD'], host=myconf.config['IP'],
+                                   database='web', port=myconf.config['DB_PORT'])
+        c_web = conn_web.cursor()
+        usr = usr + '@game.sohu.com'
+        # 检测账号是否存在
+        sql_usr = '''
+                            select name from account
+                                '''
+        c_web.execute(sql_usr)
+        names = c_web.fetchall()
+        name_list = []
+        for name_tuple in names:
+            name = name_tuple[0]
+            name_list.append(name)
+        if not usr in name_list:
+            return '账号不存在！！！！请确定您是否填入了正确的账号！！！'
+        points = int(points)
+        if not isinstance(points,int):
+            return '输入的数值不是整数，请再次确认！！！'
+        sql_web = '''
+            update account set point='%d' where name='%s'
+        ''' % (points,usr)
+        try:
+            c_web.execute(sql_web)
+            conn_web.commit()
+            c_web.close()
+            conn_web.close()
+            return '充值成功！！！！快去登录游戏试试吧！！！！'
+        except Exception as e:
+            data = '充值失败' , e
+            conn_web.rollback()
+            c_web.close()
             conn_web.close()
             return data
 # if __name__ == '__main__':

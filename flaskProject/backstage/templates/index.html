@@ -1,41 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>功能选择页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TlbbServer账号管理后台 - 欢迎进入游戏世界</title>
+    <link rel="stylesheet" href="static/assets/css/loader/loaders.css">
+    <link rel="stylesheet" href="static/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="static/assets/css/swiper.css">
+    <link rel="stylesheet" href="static/assets/css/aos/aos.css">
+    <link rel="stylesheet" href="static/assets/css/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="static/assets/css/style.css">
+    <link rel="stylesheet" href="static/assets/css/responsive.css">
 </head>
+
 <body>
-<table border="1" >
-    <tr>
+    <!-- Loader Start Here -->
+    <div class="css-loader">
+        <div class="loader-inner ball-pulse d-flex align-items-center justify-content-center"></div>
+    </div>
+    <!-- Loader End Here -->
+    <!-- Header Start Here -->
+    <header>
+        <div class="header-container">
+            <div class="container">
+                <div class="logo d-flex">
+                    <a href="#" class="d-inline-block m-auto"><img src="static/assets/images/logo.png" alt="Aline"></a>
+                </div>
+                <nav class="d-flex justify-content-between align-items-center main-nav">
+                    <a href="#" class="menu-icon"><i class="fa fa-align-left"></i></a>
+                    <ul class="main-menu list-unstyled justify-self-center text-uppercase d-none d-md-flex">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ my_website }}">游戏网站</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ url_for('register') }}">注册账号</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('mpwd') }}">修改密码</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('map_save') }}">地图自救</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('account_unblock') }}">自助解封</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('gmpoint') }}">管理维护</a>
+                        </li>
 
-            <td>
-                <a href="{{ url_for('register') }}">
-                <p>注册账号</p>
-                </a>
-            </td>
+                    </ul>
+                    <div class="nav cart-login">
+                        <a class="cart" href="#"><i class="fa fa-shopping-basket"></i><span
+                                class="d-flex justify-content-center align-items-center">1</span></a>
+                        <a class="login" href="#"><i class="fa fa-user"></i></a>
+                    </div>
+                </nav>
+            </div>
+            <div class="offcanvas">
+                <a href="#" class="close"><i class="fa fa-close"></i></a>
+                <nav class="d-md-none">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{{ url_for('register') }}">注册账号</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('mpwd') }}">修改密码</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('map_save') }}">地图自救</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('account_unblock') }}">自助解封</a>
+                        </li>
+                        <li>
+                            <a  href="{{ url_for('gmpoint') }}">管理维护</a>
+                        </li>
+                        <li>
+                            <a href="#">待开发</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="social-link d-none d-md-block">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-vimeo"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End Here -->
+    <main>
+        <!-- Slider Start Here -->
+        <section class="slider">
+            <div class="swiper-container hero-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide row no-gutters">
+                        <div class="slider-content col-lg-6 offset-xl-2 col-xl-4">
+                            <h4 data-aos="fade-right" data-aos-delay="200">休闲娱乐</h4>
+                            <h5 data-aos="fade-right" data-aos-delay="600">游戏 <span>朋友</span> 娱乐<br> This Week<br> In
+                                <span>快乐游戏</span></h5>
+                            <div class="hero-btn" data-aos="fade-right" data-aos-delay="900">
+                                <a href="#" class="d-flex justify-content-center align-items-center">在上面菜单选功能 <i
+                                        class="fa fa-shopping-basket"></i></a>
+                            </div>
+                        </div>
+                        <div class="slide-img col-lg-6">
+                            <img data-aos="fade-left" data-aos-delay="0" src="static/assets/images/slide-1.jpg" alt="Slide 1">
+                        </div>
+                    </div>
+                    <div class="swiper-slide row no-gutters">
+                        <div class="slider-content col-lg-6 offset-xl-2 col-xl-4">
+                            <h4 data-aos="fade-right" data-aos-delay="200">休闲娱乐</h4>
+                            <h5 data-aos="fade-right" data-aos-delay="600">游戏 <span>朋友</span> 娱乐<br> This Week<br> In
+                                <span>快乐游戏</span></h5>
+                            <div class="hero-btn" data-aos="fade-right" data-aos-delay="900">
+                                <a href="#" class="d-flex justify-content-center align-items-center">在上面菜单选功能 <i
+                                        class="fa fa-shopping-basket"></i></a>
+                            </div>
+                        </div>
+                        <div class="slide-img col-lg-6">
+                            <img data-aos="fade-left" data-aos-delay="0" src="static/assets/images/slide-2.jpg" alt="Slide 2">
+                        </div>
+                    </div>
+                    <div class="swiper-slide row no-gutters">
+                        <div class="slider-content col-lg-6 offset-xl-2 col-xl-4">
+                            <h4 data-aos="fade-right" data-aos-delay="200">休闲娱乐</h4>
+                            <h5 data-aos="fade-right" data-aos-delay="600">游戏 <span>朋友</span> 娱乐<br> This Week<br> In
+                                <span>快乐游戏</span></h5>
+                            <div class="hero-btn" data-aos="fade-right" data-aos-delay="900">
+                                <a href="#" class="d-flex justify-content-center align-items-center">在上面菜单选功能 <i
+                                        class="fa fa-shopping-basket"></i></a>
+                            </div>
+                        </div>
+                        <div class="slide-img col-lg-6">
+                            <img data-aos="fade-left" data-aos-delay="0" src="static/assets/images/slide-3.jpg" alt="Slide 3">
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Control -->
+                <div class="slide-control d-inline-flex align-items-center">
+                    <i class="fa fa-angle-left arr-left"></i>
+                    <div class="swiper-pagination"></div>
+                    <i class="fa fa-angle-right arr-right"></i>
+                </div>
+            </div>
+        </section>
+        <!-- Slider End Here -->
+        <!-- Banner Start Here -->
+
+        <!-- Banner End Here -->
 
 
-            <td>
-                <a href="{{ url_for('mpwd') }}">
-                <p>修改密码</p>
-                </a>
-            </td>
 
 
-            <td>
-                <a href="{{ url_for('map_save') }}">
-                <p>地图自救</p>
-                    </a>
-            </td>
-        <td>
-                <a href="{{ url_for('account_unblock') }}">
-                <p>自助解封</p>
-                    </a>
-            </td>
 
-    </tr>
+        <!-- Social Link End Here -->
+    </main>
+    <!-- Footer Start Here -->
+    <footer>
 
-
-</table>
+        <div class="foot-note">
+            <div class="container text-center foot-text">
+                <p>Copyright 2019 Aline. Design by <a href="{{ my_website }}" target="_blank">Ataier</a>.</p>
+                <!-- Back to Top Button Start -->
+                <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-arrow-up"></i></a>
+                <!-- Back to Top Button End -->
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End Here -->
+    <script src="static/assets/js/jquery-3.3.1.js"></script>
+    <script src="static/assets/js/bootstrap.js"></script>
+    <script src="static/assets/js/swiper.min.js"></script>
+    <script src="static/assets/js/aos.js"></script>
+    <script src="static/assets/js/loaders.css.js"></script>
+    <script src="static/assets/js/jquery.filterizr.min.js"></script>
+    <script src="static/assets/js/main.js"></script>
 </body>
+
 </html>

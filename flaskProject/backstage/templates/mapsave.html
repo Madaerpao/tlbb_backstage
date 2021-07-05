@@ -1,52 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>地图自救页面</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="static/assets/img/favicon.png" rel="icon">
-  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
-  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="static/assets/css/style.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Mamba - v2.0.1
-  * Template URL: https://bootstrapmade.com/mamba-one-page-bootstrap-template-free/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <meta charset="UTF-8">
+    <title>地图自救</title>
+    <link rel="stylesheet" type="text/css" href="static/css/regist.css">
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
 </head>
+<style>
+    #code{
+        background-color: darkgrey;
+        color: red;
+        font-size: 15px;
+        border: none;
+        text-align: center;
+        alignment: right;
+
+    }
+
+    #subon {
+background-color: #ccc;
+
+-moz-border-radius: 5px;
+
+-webkit-border-radius: 5px;
+
+border-radius:6px;
+
+color: #fff;
+
+font-family: 'Oswald';
+
+font-size: 20px;
+
+text-decoration: none;
+
+cursor: pointer;
+
+border:none;
+
+}
+
+#subon:hover {
+border: none;
+
+background:#417db7;
+
+box-shadow: 0px 0px 1px #777;
+
+}
+</style>
 <body>
-<form action="{{ url_for('mapsave_result') }}" method="POST">
-    <p>账号:  <input type="text" name="usr" width="10">@game.sohu.com</p>
-    <p>密码:   <input type="password" name="password" width="10"></p>
-    <p>注意：暂时不可选角色，角色地图自救功能会将改账号目录下所有角色直接传送回大理城！！！</p>
-    <p>选角色功能将在未来完善！！！！</p>
-    <p><input type="submit"></p>
+    <div class="wrapper">
+        <article>
+            <h1><em></em><span>地图自救功能</span></h1>
+            <div class="main">
+                <form action="{{ url_for('mapsave_result') }}" method="POST">
 
-</form>
+                        <input type="text" name="usr" width="10" placeholder="账号@game.sohu.com"><em>无需输入@game.sohu.com</em>
 
+                        <input type="password" name="password" width="10" placeholder="密码"><em> 请正确输入当前账号的密码！</em>
+                        <input type="password" name="re_password"  width="10" placeholder="请确认密码"><em> 切勿泄露您的密码，两次输入必须要保持一致！</em>
+                        <em>地图自救会在该账号的所有角色生效！！！</em>
+                    <em>验证码：（区分大小写）                                                           <input name="usr_input" type="text" style="width: 100px"> <input type="text" name="or_code" value="{{ get_code }}" style="width: 80px"  readonly unselectable='on' id="code" ></em>
 
-
+                    <input type="submit"  id="subon" >
+                </form>
+            </div>
+        </article>
+        <footer>
+            <ul>
+                <li><a href="{{ url_for('index') }}">回到首页</a></li>
+                <li><a href="{{ url_for('register') }}">注册功能</a></li>
+                <li><a href="{{ url_for('mpwd') }}">修改密码</a></li>
+                <li><a href="{{ url_for('map_save') }}">地图自救</a></li>
+                <li><a href="{{ url_for('account_unblock') }}">自助解封</a></li>
+                <li><a href="{{ my_website }}">关注我们</a></li>
+            </ul>
+            <p>维护和更新请关注我的git仓库，如有问题请联系我QQ3284809656<a href="https://www.zkwd888.ltd" target="_blank">阿泰尔</a></p>
+        </footer>
+    </div>
 </body>
-
-
 </html>
