@@ -22,21 +22,17 @@
 
 4.可以通过增加账号验证条件，将注册后台改为在线分配账号点数工具。
 
-**效果展示：**（示例页面： http://www.zkwd888.ltd:8881/）
-
-![image-20210705164738062](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164738062.png)
+**效果展示：**  示例页面： http://www.zkwd888.ltd:8881/  
 
 
+![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0705/165313_6cb3c3c8_8680032.png "image-20210705164738062.png")
 
-![image-20210705164804720](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164804720.png)
+![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0705/165411_719435e9_8680032.png "image-20210705164804720.png")
 
+![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0705/165421_e9f35497_8680032.png "image-20210705164824808.png")
 
+![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0705/165429_2293d0f3_8680032.png "image-20210705164940048.png")
 
-![image-20210705164824808](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164824808.png)
-
-
-
-![image-20210705164940048](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164940048.png)
 
 ---
 
