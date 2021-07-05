@@ -21,6 +21,10 @@ function docker_install()
 #Docker Build And Run
 function docker_run()
 {
+
+	docker stop "tl_backstage"
+	docker rm  -f "tl_backstage"
+	docker rmi  -f "tlbb_backstage"
 	docker build -t "tlbb_backstage" .
 	docker run -d -p 8881:8881 --name "tl_backstage" "tlbb_backstage"
 	echo " HTTP://你的IP:8881 即可访问！！！"
