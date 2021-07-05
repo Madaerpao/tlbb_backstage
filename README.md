@@ -22,31 +22,77 @@
 
 4.可以通过增加账号验证条件，将注册后台改为在线分配账号点数工具。
 
+**效果展示：**（示例页面： http://www.zkwd888.ltd:8881/）
+
+![image-20210705164738062](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164738062.png)
+
+
+
+![image-20210705164804720](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164804720.png)
+
+
+
+![image-20210705164824808](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164824808.png)
+
+
+
+![image-20210705164940048](C:\Users\ZK\AppData\Roaming\Typora\typora-user-images\image-20210705164940048.png)
+
 ---
 
 ## 使用方法
 
-1.打开 flaskProject/performance.py ，在其中 搜索并替换 如下两端字符为指定内容（可以看图片哦）：
+获取安装包：
+
+如果在线获取的话 则需要如下命令
+
+```shell
+cd ~ && git clone https://gitee.com/zhao-kai135/tlbb_backstage.git .
+```
+
+如果是自己下载压缩包，上传服务器的，不需要执行以上命令
+
+1.打开 flaskProject/myconf.py ，按照说明修改配置文件：
+
+```python
+config = {
+    'IP':'您的数据库Ip',                   #数据库所在IP，一般是Linux的IP地址
+    'DB_PASSWORD':'您的数据库密码',    #数据库密码，不是Linux密码
+    'DB_PORT':3306,                 #数据库端口默认3306，如果您的不是3306，请自行更改
+    'register': True,               #网页自助注册功能是否开启，默认开启，False关闭
+    'modify_passwd':True,            #修改密码功能是否开启，默认开启，False关闭
+    'gm_point':True,                #GM在线发放点数功能，默认开始，False关闭
+    'gm_tool_pwd':'1TeStMySeRvErGmToOl.29',     #可自定，GM在线功能的密码，如果上面的功能未开启，可以不进行修改
+    'my_website':'https://www.zkwd888.ltd' #自己有主页的话写自己的，没有的话就随意填写，可不修改
+
+}
 
 ```
-修改为您的数据库密码
-
-修改为您的Linux机IP地址
-```
-
-![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0704/223017_2f3934cf_8680032.png "替换文本1.png")
-
-![輸入圖片說明](https://images.gitee.com/uploads/images/2021/0704/223033_baf2e94f_8680032.png "替换文本2.png")
 
 
 注意：
 
-- 要全部替换！！！！
 - .py文件里面的单引号要保留！！
 - 数据库密码不是Linux密码，不要输错哦！！
-
+- True/False控制功能是否开启
+- 如果开启了Gm在线发放点数功能，请牢记您的Gm在线功能密码（单引号内部的就是您的GM密码），避免泄露！！！
+- GM功能目前只能发放点数，在Gm管理界面输入GM密码、发放点数的账号、发放的数额。
 
 2.将整个flaskProject上传至您的Linux的root目录下，然后输入命令：
+
+**如果前面是在线获取安装包的，请执行以下命令：**
+
+```shell
+cd /root/tlbb_backstage/flaskProject
+
+chmod -R 777 /root/tlbb_backstage/flaskProject
+
+sh run.sh
+```
+
+> 注意：中途出现红色的**Warining 、DEPRECATION**之类的，不要慌，不是报错 ！！！
+
+**如果前面是自行获取安装包上传至服务器的，请执行以下命令：**
 
 ```shell
 cd /root/flaskProject
@@ -56,15 +102,13 @@ chmod -R 777 /root/flaskProject
 sh run.sh
 ```
 
-> 注意：中途出现红色的**Warining 、DEPRECATION**之类的，不要慌，不是报错 ！！！
-
 3.访问一下 `http://你的IP:8881` ，测试一下有没有运行起来吧！！！！如果有问题也可以一起探讨哦！！
 
 ---
 
 ## 新增功能计划....（未实现）
 
-+ 增加验证码，避免页面被恶意频繁访问、恶意攻击MySQL数据库。
++ 增加验证码，避免页面被恶意频繁访问、恶意攻击MySQL数据库。==（已经初步实现）==
 
 + 优化前端HTML页面，提升页面美观度。
 
@@ -76,4 +120,4 @@ sh run.sh
 
 + .......
 
-  其他需求，请issue提出，有能力的话我会加上的
+  产生Bug，或者是有其他需求，请issue提出，有能力的话我会修复、增加的
