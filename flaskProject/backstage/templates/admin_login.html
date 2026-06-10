@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自助解封 - TLBB 管理后台</title>
+    <title>GM 后台登录 - TLBB 管理后台</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1 class="title">自助解封</h1>
-        <p class="subtitle">如果您的账号或角色状态异常被封停，可尝试在此解除封印</p>
+        <h1 class="title">GM 运维后台登录</h1>
+        <p class="subtitle">此系统仅供服务器管理人员使用</p>
         
-        <form action="/unblock_result" method="post">
+        <form action="/admin_login" method="post">
             <div class="form-group">
-                <label for="usr">账号</label>
-                <input type="text" id="usr" name="usr" class="form-control" required autocomplete="off">
-            </div>
-            
-            <div class="form-group">
-                <label for="password">登录密码</label>
+                <label for="password">管理员密码</label>
                 <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="re_password">确认登录密码</label>
-                <input type="password" id="re_password" name="re_password" class="form-control" required>
             </div>
             
             <div class="form-group">
@@ -35,8 +25,8 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn">立即解封</button>
-            <a href="/" class="btn btn-secondary">返回首页</a>
+            <button type="submit" class="btn">安全登录</button>
+            <a href="/" class="btn btn-secondary">返回玩家首页</a>
         </form>
         
         <div class="footer">

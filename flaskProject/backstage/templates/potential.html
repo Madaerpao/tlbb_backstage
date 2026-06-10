@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自助解封 - TLBB 管理后台</title>
+    <title>潜能分配 - TLBB 管理后台</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <h1 class="title">自助解封</h1>
-        <p class="subtitle">如果您的账号或角色状态异常被封停，可尝试在此解除封印</p>
+        <h1 class="title">潜能分配</h1>
+        <p class="subtitle">在线为您角色的未分配潜能点进行充值（需离线状态）</p>
         
-        <form action="/unblock_result" method="post">
+        <form action="/potential_result" method="post">
             <div class="form-group">
                 <label for="usr">账号</label>
                 <input type="text" id="usr" name="usr" class="form-control" required autocomplete="off">
@@ -28,6 +28,11 @@
             </div>
             
             <div class="form-group">
+                <label for="points">分配潜能点数</label>
+                <input type="number" id="points" name="points" class="form-control" required min="1" max="1000000" placeholder="例如: 1000">
+            </div>
+            
+            <div class="form-group">
                 <label>安全验证码</label>
                 <div class="captcha-group">
                     <input type="text" name="usr_input" class="form-control" placeholder="输入右侧验证码" required autocomplete="off">
@@ -35,7 +40,7 @@
                 </div>
             </div>
             
-            <button type="submit" class="btn">立即解封</button>
+            <button type="submit" class="btn">确认分配</button>
             <a href="/" class="btn btn-secondary">返回首页</a>
         </form>
         

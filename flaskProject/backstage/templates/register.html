@@ -1,84 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>注册页面</title>
-    <link rel="stylesheet" type="text/css" href="static/css/regist.css">
-    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册账号 - TLBB 管理后台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<style>
-    #code{
-        background-color: darkgrey;
-        color: red;
-        font-size: 15px;
-        border: none;
-        text-align: center;
-        alignment: right;
-
-    }
-
-    #subon {
-background-color: #ccc;
-
--moz-border-radius: 5px;
-
--webkit-border-radius: 5px;
-
-border-radius:6px;
-
-color: #fff;
-
-font-family: 'Oswald';
-
-font-size: 20px;
-
-text-decoration: none;
-
-cursor: pointer;
-
-border:none;
-
-}
-
-#subon:hover {
-border: none;
-
-background:#417db7;
-
-box-shadow: 0px 0px 1px #777;
-
-}
-</style>
 <body>
-    <div class="wrapper">
-        <article>
-            <h1><em></em><span>账号注册功能</span></h1>
-            <div class="main">
-                <form action="{{ url_for('register_result') }}" method="POST" id="myForm">
-
-                        <input type="text" name="usr" width="10" placeholder="账号@game.sohu.com"><em>无需输入@game.sohu.com</em>
-
-
-                        <input type="password" name="password" width="10" placeholder="密码"><em> 由4-10个字符组成！</em>
-                        <input type="password" name="re_password"  width="10" placeholder="请确认密码"><em> 切勿泄露您的密码，两次输入必须要保持一致！</em>
-
-                        <input type="password" name="superpwd" width="10" placeholder="超级"><em>超级密码必须大于等于8位，否则不能注册</em>
-                    <em>验证码：（区分大小写）                                                        <input name="usr_input" type="text" style="width: 100px"> <input type="text" name="or_code" value="{{ get_code }}" style="width: 80px"  readonly unselectable='on' id="code" ></em>
-                    <input type="submit"  id="subon" >
-                </form>
+    <div class="container">
+        <h1 class="title">账号注册</h1>
+        <p class="subtitle">欢迎来到天龙八部，请填写以下信息完成注册</p>
+        
+        <form action="/register_result" method="post">
+            <div class="form-group">
+                <label for="usr">账号 (建议由纯数字或字母组成)</label>
+                <input type="text" id="usr" name="usr" class="form-control" required autocomplete="off">
             </div>
-        </article>
-        <footer>
-            <ul>
-                <li><a href="{{ url_for('index') }}">回到首页</a></li>
-                <li><a href="{{ url_for('register') }}">注册功能</a></li>
-                <li><a href="{{ url_for('mpwd') }}">修改密码</a></li>
-                <li><a href="{{ url_for('map_save') }}">地图自救</a></li>
-                <li><a href="{{ url_for('account_unblock') }}">自助解封</a></li>
-                <li><a href="{{ my_website }}">关注我们</a></li>
-            </ul>
-            <p>维护和更新请关注我的git仓库，如有问题请联系我QQ3284809656<a href="https://www.zkwd888.ltd" target="_blank">阿泰尔</a></p>
-        </footer>
+            
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="re_password">确认密码</label>
+                <input type="password" id="re_password" name="re_password" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="superpwd">超级密码 (用于找回和修改密码，至少8位)</label>
+                <input type="password" id="superpwd" name="superpwd" class="form-control" required minlength="8">
+            </div>
+            
+            <div class="form-group">
+                <label>安全验证码</label>
+                <div class="captcha-group">
+                    <input type="text" name="usr_input" class="form-control" placeholder="输入右侧验证码" required autocomplete="off">
+                    <div class="captcha-img">{{ get_code }}</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">立即注册</button>
+            <a href="/" class="btn btn-secondary">返回首页</a>
+        </form>
+        
+        <div class="footer">
+            <p>&copy; 2026 TLBB Backstage. <a href="{{ my_website }}" target="_blank">访问主页</a></p>
+        </div>
     </div>
 </body>
 </html>

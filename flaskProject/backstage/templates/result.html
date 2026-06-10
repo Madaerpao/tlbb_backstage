@@ -1,11 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>结果页</title>
-    <p>{{ response }}</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作结果 - TLBB 管理后台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
+    <div class="container">
+        <h1 class="title">操作结果</h1>
+        <p class="subtitle">您的操作请求已处理</p>
+        
+        <div class="result-box">
+            {{ response }}
+        </div>
+        
+        <a href="/" class="btn" style="margin-top: 30px;">返回首页</a>
+        
+        <div class="footer">
+            <p>&copy; 2026 TLBB Backstage. <a href="{{ my_website|default('#') }}" target="_blank">访问主页</a></p>
+        </div>
+    </div>
 </body>
 </html>

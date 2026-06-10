@@ -6,6 +6,7 @@ config = {
     'modify_passwd':True,            #修改密码功能是否开启，默认开启，False关闭
     'gm_point':True,                #GM在线发放点数功能，默认开始，False关闭
     'gm_tool_pwd':'1TeStMySeRvErGmToOl.29',     #可自定，GM在线功能的密码，如果上面的功能未开启，可以不进行修改
+    'private_key':'YourPrivateKeyHere',         #API通信秘钥，配置供游戏服务端Lua脚本验证用
     'my_website':'https://www.zkwd888.ltd' #自己有主页的话写自己的，没有的话就随意填写，可不修改
 
 }

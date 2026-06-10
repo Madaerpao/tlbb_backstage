@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级GM工具 - TLBB 管理后台</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .hidden { display: none; }
+    </style>
+    <script>
+        function updateForm() {
+            var eventType = document.getElementById("event").value;
+            var param1Group = document.getElementById("group_param1");
+            var param2Group = document.getElementById("group_param2");
+            var param3Group = document.getElementById("group_param3");
+            var param4Group = document.getElementById("group_param4");
+            
+            var label1 = document.getElementById("label_param1");
+            var label2 = document.getElementById("label_param2");
+            var label3 = document.getElementById("label_param3");
+            var label4 = document.getElementById("label_param4");
+            
+            var input1 = document.getElementById("param1");
+            var input2 = document.getElementById("param2");
+            var input3 = document.getElementById("param3");
+            var input4 = document.getElementById("param4");
+
+            var eventnote = document.getElementById("eventnote");
+            
+            // 隐藏所有参数框
+            param1Group.classList.add("hidden");
+            param2Group.classList.add("hidden");
+            param3Group.classList.add("hidden");
+            param4Group.classList.add("hidden");
+
+            input1.required = false;
+            input2.required = false;
+            input3.required = false;
+            input4.required = false;
+
+            if (eventType === "SendGlobalNews") {
+                eventnote.value = "发公告";
+                param1Group.classList.remove("hidden");
+                label1.innerText = "公告内容";
+                input1.required = true;
+            } else if (eventType === "GivePlayerItem") {
+                eventnote.value = "发物品";
+                param1Group.classList.remove("hidden");
+                label1.innerText = "角色名";
+                input1.required = true;
+                
+                param2Group.classList.remove("hidden");
+                label2.innerText = "物品ID";
+                input2.required = true;
+                
+                param3Group.classList.remove("hidden");
+                label3.innerText = "数量";
+                input3.required = true;
+            } else if (eventType === "SetPlayerLevel") {
+                eventnote.value = "设等级";
+                param1Group.classList.remove("hidden");
+                label1.innerText = "角色名";
+                input1.required = true;
+                
+                param2Group.classList.remove("hidden");
+                label2.innerText = "目标等级";
+                input2.required = true;
+            } else if (eventType === "GivePlayerYuanBao") {
+                eventnote.value = "发元宝";
+                param1Group.classList.remove("hidden");
+                label1.innerText = "角色名";
+                input1.required = true;
+                
+                param2Group.classList.remove("hidden");
+                label2.innerText = "元宝数量";
+                input2.required = true;
+            }
+        }
+        
+        window.onload = updateForm;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">高级GM工具</h1>
+        <p class="subtitle">通过事件轮询控制游戏服务端功能</p>
+        
+        <form action="/gmtools_result" method="post">
+            <input type="hidden" id="eventnote" name="eventnote" value="发公告">
+            
+            <div class="form-group">
+                <label for="event">请选择要执行的功能</label>
+                <select id="event" name="event" class="form-control" onchange="updateForm()" required style="background: rgba(255, 255, 255, 0.05); color: #fff;">
+                    <option value="SendGlobalNews" style="color: #000;">发送全服公告</option>
+                    <option value="GivePlayerItem" style="color: #000;">发放物品给角色</option>
+                    <option value="GivePlayerYuanBao" style="color: #000;">发放元宝给角色</option>
+                    <option value="SetPlayerLevel" style="color: #000;">设置角色等级</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="group_param1">
+                <label id="label_param1" for="param1">参数1</label>
+                <input type="text" id="param1" name="param1" class="form-control" autocomplete="off">
+            </div>
+            
+            <div class="form-group" id="group_param2">
+                <label id="label_param2" for="param2">参数2</label>
+                <input type="text" id="param2" name="param2" class="form-control" autocomplete="off">
+            </div>
+            
+            <div class="form-group" id="group_param3">
+                <label id="label_param3" for="param3">参数3</label>
+                <input type="text" id="param3" name="param3" class="form-control" autocomplete="off">
+            </div>
+            
+            <div class="form-group" id="group_param4">
+                <label id="label_param4" for="param4">参数4</label>
+                <input type="text" id="param4" name="param4" class="form-control" autocomplete="off">
+            </div>
+            
+            <div class="form-group">
+                <label>安全验证码</label>
+                <div class="captcha-group">
+                    <input type="text" name="usr_input" class="form-control" placeholder="输入右侧验证码" required autocomplete="off">
+                    <div class="captcha-img">{{ get_code }}</div>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">立即执行</button>
+            <a href="/admin_dashboard" class="btn btn-secondary">返回 GM 控制台</a>
+        </form>
+        
+        <div class="footer">
+            <p>&copy; 2026 TLBB Backstage. <a href="{{ my_website }}" target="_blank">访问主页</a></p>
+        </div>
+    </div>
+</body>
+</html>
