@@ -1,0 +1,53 @@
+name: 安全覆写gpt-稳定版
+
+# ==========================================================
+# DNS
+# ==========================================================
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  ipv6: false
+  follow-rule: false
+
+
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+  nameserver:
+
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+
+  fake-ip-filter:
+    - '*.meeting.qq.com'
+    - '*.voovmeeting.com'
+    - '*.tencentmeeting.com'
+    - '*.teams.microsoft.com'
+    - '*.skype.com'
+    - '*.teams.cdn.office.net'
+    - 'teams.microsoft.com'
+
+
+# ==========================================================
+# 只增加必要的规则
+# ==========================================================
+
+rules:
+
+  # 局域网
+  - IP-CIDR,127.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+
+  # 腾讯会议
+  - DOMAIN-SUFFIX,meeting.qq.com,DIRECT
+  - DOMAIN-SUFFIX,voovmeeting.com,DIRECT
+  - DOMAIN-SUFFIX,tencentmeeting.com,DIRECT
